@@ -1,0 +1,2 @@
+Trade ID,Symbol,Asset Class,Direction,Entry Time,Entry Price,Stop Loss,Take Profit,Exit Time,Exit Price,Size,Net PnL ($),Return (R),Holding Bars,Exit Reason
+1,^FTSE,Indices / ETFs,LONG,2026-07-23 16:00:00+00:00,9835.55828,9710.4,10398.77051,2026-07-26 16:00:00+00:00,9895.03223,11.9848,712.78,0.48,18,Time Barrier (18 Bars)

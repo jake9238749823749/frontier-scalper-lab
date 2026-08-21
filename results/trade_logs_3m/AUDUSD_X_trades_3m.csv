@@ -1,0 +1,2 @@
+Trade ID,Symbol,Asset Class,Direction,Entry Time,Entry Price,Stop Loss,Take Profit,Exit Time,Exit Price,Size,Net PnL ($),Return (R),Holding Bars,Exit Reason
+1,AUDUSD=X,Forex,SHORT,2026-08-02 00:00:00+00:00,0.65443,0.65696,0.64304,2026-08-04 20:00:00+00:00,0.64318,592885.1412,6666.99,4.44,17,Take Profit (4.5R)
