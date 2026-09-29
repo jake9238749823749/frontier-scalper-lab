@@ -1,0 +1,592 @@
+{
+  "dataset": "US30 / Dow Jones Industrial Average - intraday multi-timeframe tape",
+  "instrument": {
+    "requested": "US30 / Dow",
+    "captured": "^DJI - Dow Jones Industrial Average cash index (USD)",
+    "note": "US30 is commonly a broker CFD on the Dow. No broker CFD tick feed was reachable, so the underlying cash index tape is used; CFD quote-level cross-checks are recorded in raw/cross_source_quotes.json."
+  },
+  "built_at_utc": "2026-09-29T19:51:20Z",
+  "session": {
+    "state": "REGULAR_SESSION_OPEN",
+    "as_of_utc": "2026-09-29T19:38:57Z",
+    "as_of_exchange_local": "2026-09-29 15:38:57 EDT",
+    "exchange_timezone": "America/New_York",
+    "tz_abbrev": "EDT",
+    "utc_offset_seconds": -14400,
+    "regular_session_utc": "2026-09-29T13:30:00Z -> 2026-09-29T20:00:00Z",
+    "regular_session_et": "2026-09-29 09:30:00 EDT -> 2026-09-29 16:00:00 EDT",
+    "elapsed_minutes": 368.9,
+    "minutes_to_close": 21.1,
+    "session_progress_pct": 94.6,
+    "halted": "N (per CNBC EventData.is_halted)"
+  },
+  "timeframes": {
+    "1m": {
+      "origin": "VERIFIED",
+      "source": "Yahoo Finance chart API v8",
+      "endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?interval=1m&period1=1790704800&period2=1790712000",
+      "fetched_at_utc": "2026-09-29T19:39:44Z",
+      "vendor_as_of_utc": "2026-09-29T19:39:44Z",
+      "completed_bars": 99,
+      "first_bar_utc": "2026-09-29T18:00:00Z",
+      "last_completed_bar": {
+        "time_utc": "2026-09-29T19:38:00Z",
+        "time_et": "2026-09-29 15:38:00 EDT",
+        "open": 51357.65,
+        "high": 51364.75,
+        "low": 51356.96,
+        "close": 51363.93,
+        "volume": 1047474,
+        "range_pts": 7.79,
+        "body_pts": 6.28,
+        "upper_wick_pts": 0.82,
+        "lower_wick_pts": 0.69,
+        "ret_pts": 6.64,
+        "ret_pct": 0.0129,
+        "close_pos_in_range": 0.8947,
+        "direction": "UP"
+      },
+      "vendor_snapshot": {
+        "snapshot_time_utc": "2026-09-29T19:39:44Z",
+        "last_price": 51361.17,
+        "cumulative_volume": 256517137
+      },
+      "current_bar_note": "vendor returned null OHLC for the in-flight 1m bucket 2026-09-29T19:39:00Z - no current-bar values available (MISSING, not zero-filled)",
+      "current_bar_in_progress": null,
+      "swing_structure": {
+        "confirmed_swing_highs": 12,
+        "confirmed_swing_lows": 9,
+        "last_swing_high": {
+          "time_utc": "2026-09-29T19:33:00Z",
+          "time_et": "2026-09-29 15:33:00 EDT",
+          "price": 51384.27
+        },
+        "prior_swing_high": {
+          "time_utc": "2026-09-29T19:23:00Z",
+          "price": 51375.49
+        },
+        "last_swing_low": {
+          "time_utc": "2026-09-29T19:35:00Z",
+          "time_et": "2026-09-29 15:35:00 EDT",
+          "price": 51350.08
+        },
+        "prior_swing_low": {
+          "time_utc": "2026-09-29T19:29:00Z",
+          "price": 51349.66
+        },
+        "high_sequence": "HIGHER_HIGH",
+        "low_sequence": "HIGHER_LOW",
+        "structure_label": "UPTREND (HH+HL)"
+      },
+      "swing_points_confirmed": 21,
+      "unconfirmable_tail_bars": 2,
+      "integrity_checks": [
+        {
+          "check": "OHLC internal consistency (low<=min(o,c), high>=max(o,c))",
+          "bars_tested": 99,
+          "violations": 0,
+          "status": "PASS"
+        },
+        {
+          "check": "non-zero volume on completed bars",
+          "bars_tested": 99,
+          "zero_or_null": 1,
+          "timestamps": [
+            "2026-09-29T18:00:00Z"
+          ],
+          "status": "FLAG"
+        },
+        {
+          "check": "intra-session bar contiguity",
+          "unexpected_gaps": 0,
+          "detail": [],
+          "status": "PASS"
+        }
+      ],
+      "notes": [
+        "1 non-bar snapshot row(s) at regularMarketTime excluded from the bar series (vendor quote row, volume field is 0).",
+        "null OHLC returned by vendor for bucket(s) 2026-09-29T19:39:00Z (2026-09-29 15:39:00 EDT) - reported as MISSING, not interpolated."
+      ]
+    },
+    "3m": {
+      "origin": "DERIVED",
+      "source": "resampled from native 1m (Yahoo Finance chart API v8)",
+      "endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?interval=1m&period1=1790704800&period2=1790712000",
+      "fetched_at_utc": "2026-09-29T19:39:44Z",
+      "vendor_as_of_utc": "2026-09-29T19:39:44Z",
+      "completed_bars": 33,
+      "first_bar_utc": "2026-09-29T18:00:00Z",
+      "last_completed_bar": {
+        "time_utc": "2026-09-29T19:36:00Z",
+        "time_et": "2026-09-29 15:36:00 EDT",
+        "open": 51352.34,
+        "high": 51364.75,
+        "low": 51350.73,
+        "close": 51363.93,
+        "volume": 2546408,
+        "range_pts": 14.02,
+        "body_pts": 11.59,
+        "upper_wick_pts": 0.82,
+        "lower_wick_pts": 1.61,
+        "ret_pts": 11.66,
+        "ret_pct": 0.0227,
+        "close_pos_in_range": 0.9415,
+        "direction": "UP"
+      },
+      "vendor_snapshot": {},
+      "current_bar_note": "in-flight 3m bucket cannot be formed: its only elapsed 1m member was returned null by the vendor (vendor returned null OHLC for the in-flight 1m bucket 2026-09-29T19:39:00Z - no current-bar values available (MISSING, not zero-filled))",
+      "current_bar_in_progress": null,
+      "swing_structure": {
+        "confirmed_swing_highs": 4,
+        "confirmed_swing_lows": 5,
+        "last_swing_high": {
+          "time_utc": "2026-09-29T19:21:00Z",
+          "time_et": "2026-09-29 15:21:00 EDT",
+          "price": 51375.49
+        },
+        "prior_swing_high": {
+          "time_utc": "2026-09-29T18:39:00Z",
+          "price": 51380.38
+        },
+        "last_swing_low": {
+          "time_utc": "2026-09-29T19:27:00Z",
+          "time_et": "2026-09-29 15:27:00 EDT",
+          "price": 51349.66
+        },
+        "prior_swing_low": {
+          "time_utc": "2026-09-29T19:18:00Z",
+          "price": 51341.58
+        },
+        "high_sequence": "LOWER_HIGH",
+        "low_sequence": "HIGHER_LOW",
+        "structure_label": "MIXED (LOWER_HIGH+HIGHER_LOW)"
+      },
+      "swing_points_confirmed": 9,
+      "unconfirmable_tail_bars": 2,
+      "integrity_checks": [
+        {
+          "check": "3m bucket = exactly 3 native 1m bars",
+          "buckets_emitted": 33,
+          "under_filled_skipped": 0,
+          "status": "PASS"
+        }
+      ],
+      "notes": [
+        "Vendor validRanges for ^DJI expose 1m/2m/5m/15m/30m/60m/90m only - 3m has no native feed, so it is aggregated from 1m closes."
+      ]
+    },
+    "5m": {
+      "origin": "VERIFIED",
+      "source": "Yahoo Finance chart API v8",
+      "endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?interval=5m&range=1d",
+      "fetched_at_utc": "2026-09-29T19:38:57Z",
+      "vendor_as_of_utc": "2026-09-29T19:38:57Z",
+      "completed_bars": 73,
+      "first_bar_utc": "2026-09-29T13:30:00Z",
+      "last_completed_bar": {
+        "time_utc": "2026-09-29T19:30:00Z",
+        "time_et": "2026-09-29 15:30:00 EDT",
+        "open": 51367.59,
+        "high": 51384.27,
+        "low": 51353.67,
+        "close": 51356.13,
+        "volume": 3593117,
+        "range_pts": 30.6,
+        "body_pts": -11.46,
+        "upper_wick_pts": 16.68,
+        "lower_wick_pts": 2.46,
+        "ret_pts": -11.04,
+        "ret_pct": -0.0215,
+        "close_pos_in_range": 0.0803,
+        "direction": "DOWN"
+      },
+      "vendor_snapshot": {
+        "snapshot_time_utc": "2026-09-29T19:38:57Z",
+        "last_price": 51363.44,
+        "cumulative_volume": 256003045
+      },
+      "current_bar_note": "",
+      "current_bar_in_progress": {
+        "time_utc": "2026-09-29T19:35:00Z",
+        "time_et": "2026-09-29 15:35:00 EDT",
+        "open": 51356.09,
+        "high": 51362.14,
+        "low": 51350.08,
+        "close_so_far": 51357.29,
+        "volume_so_far": 2352569,
+        "range_pts": 12.06,
+        "close_pos_in_range": 0.5978,
+        "status": "INCOMPLETE - values will change before the bar closes"
+      },
+      "swing_structure": {
+        "confirmed_swing_highs": 11,
+        "confirmed_swing_lows": 10,
+        "last_swing_high": {
+          "time_utc": "2026-09-29T18:40:00Z",
+          "time_et": "2026-09-29 14:40:00 EDT",
+          "price": 51380.38
+        },
+        "prior_swing_high": {
+          "time_utc": "2026-09-29T18:20:00Z",
+          "price": 51311.9
+        },
+        "last_swing_low": {
+          "time_utc": "2026-09-29T19:15:00Z",
+          "time_et": "2026-09-29 15:15:00 EDT",
+          "price": 51341.58
+        },
+        "prior_swing_low": {
+          "time_utc": "2026-09-29T18:55:00Z",
+          "price": 51323.15
+        },
+        "high_sequence": "HIGHER_HIGH",
+        "low_sequence": "HIGHER_LOW",
+        "structure_label": "UPTREND (HH+HL)"
+      },
+      "swing_points_confirmed": 21,
+      "unconfirmable_tail_bars": 2,
+      "integrity_checks": [
+        {
+          "check": "OHLC internal consistency (low<=min(o,c), high>=max(o,c))",
+          "bars_tested": 73,
+          "violations": 0,
+          "status": "PASS"
+        },
+        {
+          "check": "non-zero volume on completed bars",
+          "bars_tested": 73,
+          "zero_or_null": 0,
+          "timestamps": [],
+          "status": "PASS"
+        },
+        {
+          "check": "intra-session bar contiguity",
+          "unexpected_gaps": 0,
+          "detail": [],
+          "status": "PASS"
+        }
+      ],
+      "notes": [
+        "1 non-bar snapshot row(s) at regularMarketTime excluded from the bar series (vendor quote row, volume field is 0)."
+      ]
+    },
+    "15m": {
+      "origin": "VERIFIED",
+      "source": "Yahoo Finance chart API v8",
+      "endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?interval=15m&period1=1790600000&period2=1790712000",
+      "fetched_at_utc": "2026-09-29T19:40:11Z",
+      "vendor_as_of_utc": "2026-09-29T19:40:11Z",
+      "completed_bars": 50,
+      "first_bar_utc": "2026-09-28T13:30:00Z",
+      "last_completed_bar": {
+        "time_utc": "2026-09-29T19:15:00Z",
+        "time_et": "2026-09-29 15:15:00 EDT",
+        "open": 51356.77,
+        "high": 51375.49,
+        "low": 51341.58,
+        "close": 51367.17,
+        "volume": 9698199,
+        "range_pts": 33.91,
+        "body_pts": 10.4,
+        "upper_wick_pts": 8.32,
+        "lower_wick_pts": 15.19,
+        "ret_pts": 11.27,
+        "ret_pct": 0.022,
+        "close_pos_in_range": 0.7548,
+        "direction": "UP"
+      },
+      "vendor_snapshot": {
+        "snapshot_time_utc": "2026-09-29T19:40:11Z",
+        "last_price": 51359.71,
+        "cumulative_volume": 256873422
+      },
+      "current_bar_note": "",
+      "current_bar_in_progress": {
+        "time_utc": "2026-09-29T19:30:00Z",
+        "time_et": "2026-09-29 15:30:00 EDT",
+        "open": 51367.59,
+        "high": 51384.27,
+        "low": 51350.08,
+        "close_so_far": 51356.3,
+        "volume_so_far": 7672580,
+        "range_pts": 34.19,
+        "close_pos_in_range": 0.182,
+        "status": "INCOMPLETE - values will change before the bar closes"
+      },
+      "swing_structure": {
+        "confirmed_swing_highs": 6,
+        "confirmed_swing_lows": 4,
+        "last_swing_high": {
+          "time_utc": "2026-09-29T18:30:00Z",
+          "time_et": "2026-09-29 14:30:00 EDT",
+          "price": 51380.38
+        },
+        "prior_swing_high": {
+          "time_utc": "2026-09-29T16:45:00Z",
+          "price": 51206.1
+        },
+        "last_swing_low": {
+          "time_utc": "2026-09-29T17:00:00Z",
+          "time_et": "2026-09-29 13:00:00 EDT",
+          "price": 51150.4
+        },
+        "prior_swing_low": {
+          "time_utc": "2026-09-29T16:00:00Z",
+          "price": 51129.18
+        },
+        "high_sequence": "HIGHER_HIGH",
+        "low_sequence": "HIGHER_LOW",
+        "structure_label": "UPTREND (HH+HL)"
+      },
+      "swing_points_confirmed": 10,
+      "unconfirmable_tail_bars": 2,
+      "integrity_checks": [
+        {
+          "check": "OHLC internal consistency (low<=min(o,c), high>=max(o,c))",
+          "bars_tested": 50,
+          "violations": 0,
+          "status": "PASS"
+        },
+        {
+          "check": "non-zero volume on completed bars",
+          "bars_tested": 50,
+          "zero_or_null": 0,
+          "timestamps": [],
+          "status": "PASS"
+        },
+        {
+          "check": "intra-session bar contiguity",
+          "unexpected_gaps": 0,
+          "detail": [],
+          "status": "PASS"
+        }
+      ],
+      "notes": [
+        "1 non-bar snapshot row(s) at regularMarketTime excluded from the bar series (vendor quote row, volume field is 0)."
+      ]
+    },
+    "30m": {
+      "origin": "VERIFIED",
+      "source": "Yahoo Finance chart API v8",
+      "endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/%5EDJI?interval=30m&range=5d",
+      "fetched_at_utc": "2026-09-29T19:39:59Z",
+      "vendor_as_of_utc": "2026-09-29T19:38:45Z",
+      "completed_bars": 64,
+      "first_bar_utc": "2026-09-23T13:30:00Z",
+      "last_completed_bar": {
+        "time_utc": "2026-09-29T19:00:00Z",
+        "time_et": "2026-09-29 15:00:00 EDT",
+        "open": 51346.11,
+        "high": 51375.49,
+        "low": 51338.38,
+        "close": 51367.17,
+        "volume": 18040154,
+        "range_pts": 37.11,
+        "body_pts": 21.06,
+        "upper_wick_pts": 8.32,
+        "lower_wick_pts": 7.73,
+        "ret_pts": 21.12,
+        "ret_pct": 0.0411,
+        "close_pos_in_range": 0.7759,
+        "direction": "UP"
+      },
+      "vendor_snapshot": {
+        "snapshot_time_utc": "2026-09-29T19:38:45Z",
+        "last_price": 51364.33,
+        "cumulative_volume": 255838133
+      },
+      "current_bar_note": "",
+      "current_bar_in_progress": {
+        "time_utc": "2026-09-29T19:30:00Z",
+        "time_et": "2026-09-29 15:30:00 EDT",
+        "open": 51367.59,
+        "high": 51384.27,
+        "low": 51350.08,
+        "close_so_far": 51357.29,
+        "volume_so_far": 5945686,
+        "range_pts": 34.19,
+        "close_pos_in_range": 0.2109,
+        "status": "INCOMPLETE - values will change before the bar closes"
+      },
+      "swing_structure": {
+        "confirmed_swing_highs": 8,
+        "confirmed_swing_lows": 7,
+        "last_swing_high": {
+          "time_utc": "2026-09-28T17:00:00Z",
+          "time_et": "2026-09-28 13:00:00 EDT",
+          "price": 51780.5
+        },
+        "prior_swing_high": {
+          "time_utc": "2026-09-25T19:30:00Z",
+          "price": 51874.94
+        },
+        "last_swing_low": {
+          "time_utc": "2026-09-29T16:00:00Z",
+          "time_et": "2026-09-29 12:00:00 EDT",
+          "price": 51129.18
+        },
+        "prior_swing_low": {
+          "time_utc": "2026-09-28T15:00:00Z",
+          "price": 51409.65
+        },
+        "high_sequence": "LOWER_HIGH",
+        "low_sequence": "LOWER_LOW",
+        "structure_label": "DOWNTREND (LH+LL)"
+      },
+      "swing_points_confirmed": 15,
+      "unconfirmable_tail_bars": 2,
+      "integrity_checks": [
+        {
+          "check": "OHLC internal consistency (low<=min(o,c), high>=max(o,c))",
+          "bars_tested": 64,
+          "violations": 0,
+          "status": "PASS"
+        },
+        {
+          "check": "non-zero volume on completed bars",
+          "bars_tested": 64,
+          "zero_or_null": 0,
+          "timestamps": [],
+          "status": "PASS"
+        },
+        {
+          "check": "intra-session bar contiguity",
+          "unexpected_gaps": 0,
+          "detail": [],
+          "status": "PASS"
+        }
+      ],
+      "notes": [
+        "1 non-bar snapshot row(s) at regularMarketTime excluded from the bar series (vendor quote row, volume field is 0)."
+      ]
+    }
+  },
+  "verification": [
+    {
+      "check": "cross-timeframe session volume reconciliation (5m vs 15m vs 30m, common cutoff)",
+      "common_cutoff_utc": "2026-09-29T19:30:00Z",
+      "sums": {
+        "5m": 234835131,
+        "15m": 234835131,
+        "30m": 234835131
+      },
+      "all_identical": true,
+      "status": "PASS",
+      "interpretation": "Independent native feeds at three granularities aggregate to the identical share count over the same window - the bar-level volume series is internally consistent."
+    },
+    {
+      "check": "headline regularMarketVolume vs sum of 5m bar volumes",
+      "sum_completed_5m_bars": 238428248,
+      "sum_incl_in_progress_bar": 240780817,
+      "vendor_regularMarketVolume": 256003045,
+      "cnbc_volume_later_snapshot": 258026708,
+      "residual_vs_vendor": 15222228,
+      "residual_pct": 5.9461,
+      "status": "FLAG (documented divergence - do not treat the two as interchangeable)",
+      "interpretation": "The headline index volume field exceeds the sum of the bar-level volume series by ~5.9%. The divergence is present at 5m, 15m and 30m alike, so it is a vendor aggregation difference, not a gap in the bar tape. Use bar volumes for bar-relative analysis and the headline field only as a session-level figure; they are not reconciled here because no source document explains the difference."
+    },
+    {
+      "check": "1m aggregation reproduces native 5m OHLC (overlap window)",
+      "bars_tested": 19,
+      "agreements": 19,
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "check": "1m volume sum vs native 5m volume sum (same window)",
+      "window": "2026-09-29T18:00:00Z -> 2026-09-29T19:35:00Z",
+      "buckets_tested": 19,
+      "buckets_matching_exactly": 18,
+      "buckets_mismatching": [
+        {
+          "bucket": "2026-09-29T18:00:00Z",
+          "1m_sum": 1931704,
+          "5m": 3346281,
+          "diff": 1414577,
+          "zero_vol_minutes": [
+            "2026-09-29T18:00:00Z"
+          ]
+        }
+      ],
+      "residual_fully_attributed": true,
+      "sum_1m": 51503557,
+      "sum_5m": 52918134,
+      "diff": 1414577,
+      "diff_pct": 2.6731,
+      "zero_volume_1m_bars": [
+        "2026-09-29T18:00:00Z"
+      ],
+      "status": "FLAG (attributable to zero-volume 1m bar(s) below)",
+      "interpretation": "The vendor returned volume=0 on the first 1m bar of the period1-clipped window while its OHLC is present and agrees with the 5m tape. Volume for that minute is treated as MISSING, not zero-filled."
+    },
+    {
+      "check": "15m aggregation reproduces native 30m OHLC+volume",
+      "bars_tested": 25,
+      "agreements": 25,
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "check": "session high/low from 5m tape vs vendor regularMarketDayHigh/Low",
+      "tape_high": 51505.19,
+      "vendor_high": 51505.19,
+      "tape_low": 51129.18,
+      "vendor_low": 51129.18,
+      "status": "PASS"
+    },
+    {
+      "check": "cross-source session OHL (Yahoo tape vs CNBC exchange feed)",
+      "yahoo_session_open_first_5m_bar": 51416.96,
+      "cnbc_session_open": 51416.96,
+      "yahoo_session_high": 51505.19,
+      "cnbc_session_high": 51505.19,
+      "yahoo_session_low": 51129.18,
+      "cnbc_session_low": 51129.18,
+      "yahoo_prev_close": 51481.51,
+      "cnbc_prev_close": 51481.51,
+      "status": "PASS"
+    },
+    {
+      "check": "derived change (last - previousClose) vs vendor fulldayChange field",
+      "per_feed": [
+        {
+          "tf": "1m",
+          "derived_change": -120.34,
+          "vendor_fulldayChange": -120.34,
+          "abs_diff": 0.0
+        },
+        {
+          "tf": "5m",
+          "derived_change": -118.07,
+          "vendor_fulldayChange": -118.07,
+          "abs_diff": 0.0
+        },
+        {
+          "tf": "15m",
+          "derived_change": -121.8,
+          "vendor_fulldayChange": -121.801,
+          "abs_diff": 0.001
+        },
+        {
+          "tf": "30m",
+          "derived_change": -117.18,
+          "vendor_fulldayChange": -117.184,
+          "abs_diff": 0.004
+        }
+      ],
+      "max_abs_diff": 0.004,
+      "status": "PASS",
+      "interpretation": "Our arithmetic reproduces the vendor's own published change field on every feed, confirming the previousClose anchor."
+    },
+    {
+      "check": "last price agreement across sources (different snapshot instants)",
+      "yahoo_last": 51361.17,
+      "yahoo_at_utc": "2026-09-29T19:39:44Z",
+      "cnbc_last": 51358.67,
+      "cnbc_at_local": "2026-09-29T15:41:41.000-0400",
+      "abs_diff_pts": 2.5,
+      "abs_diff_pct": 0.0049,
+      "status": "PASS (within live-tape latency tolerance)"
+    }
+  ]
+}

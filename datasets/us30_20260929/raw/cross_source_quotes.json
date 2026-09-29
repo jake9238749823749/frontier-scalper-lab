@@ -1,0 +1,89 @@
+{
+  "_capture": {
+    "purpose": "Independent cross-checks of the Yahoo ^DJI tape used for the intraday dataset",
+    "captured_utc_window": "2026-09-29T19:38Z - 2026-09-29T19:45Z",
+    "transport": "fetch_page / web_search (agent web access)"
+  },
+  "sources": [
+    {
+      "source_id": "cnbc_quote_cache",
+      "name": "CNBC Quote Cache (provider field: 'Exchange', realTime=true)",
+      "endpoint": "https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol?symbols=.DJI&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=1&output=json&events=1",
+      "symbol": ".DJI",
+      "instrument": "Dow Jones Industrial Average (cash index)",
+      "last": 51358.67,
+      "last_time_local": "2026-09-29T15:41:41.000-0400",
+      "session_open": 51416.96,
+      "session_high": 51505.19,
+      "session_low": 51129.18,
+      "change": -122.84,
+      "change_pct": "-0.24%",
+      "volume": 258026708,
+      "previous_day_closing": 51481.51,
+      "market_status": "REG_MKT",
+      "is_halted": "N",
+      "yr_high": 54744.33,
+      "yr_high_date": "08/05/26",
+      "yr_low": 45057.28,
+      "yr_low_date": "03/30/26",
+      "timezone": "EDT"
+    },
+    {
+      "source_id": "yahoo_chart_meta",
+      "name": "Yahoo Finance chart API v8 meta block (^DJI)",
+      "symbol": "^DJI",
+      "instrument": "Dow Jones Industrial Average (cash index)",
+      "last": 51361.17,
+      "last_time_utc": "2026-09-29T19:39:44Z",
+      "session_open_from_first_5m_bar": 51416.96,
+      "session_high": 51505.19,
+      "session_low": 51129.18,
+      "regularMarketVolume": 256517137,
+      "previousClose": 51481.51,
+      "fiftyTwoWeekHigh": 54744.33,
+      "fiftyTwoWeekLow": 45057.28,
+      "exchangeTimezoneName": "America/New_York"
+    },
+    {
+      "source_id": "tradingeconomics_us30_cfd",
+      "name": "Trading Economics US30 (CFD proxy, not the cash index)",
+      "url": "https://tradingeconomics.com/indu:ind",
+      "symbol": "US30",
+      "instrument": "US30 CFD tracking the Dow",
+      "last": 51363,
+      "change": -118.91,
+      "change_pct": "-0.23%",
+      "as_of": "Sep/29 2026",
+      "note": "Quote-level only; no intraday OHLC bar series captured from this source."
+    },
+    {
+      "source_id": "investing_com_us30_cfd",
+      "name": "Investing.com US 30 / Dow Jones",
+      "url": "https://www.investing.com/indices/us-30-chart",
+      "dji_prior_settlement": 51481.51,
+      "dji_prior_change": -347.11,
+      "dji_prior_change_pct": "-0.67%",
+      "us30_cfd_last": 51379.60,
+      "note": "Confirms prior-session (2026-09-28) DJI close of 51,481.51. CFD last differs from cash index by the usual basis."
+    }
+  ],
+  "agreement_checks": {
+    "session_open": {"yahoo_first_5m_bar_open": 51416.96, "cnbc_open": 51416.96, "match": true},
+    "session_high": {"yahoo": 51505.19, "cnbc": 51505.19, "match": true},
+    "session_low": {"yahoo": 51129.18, "cnbc": 51129.18, "match": true},
+    "previous_close": {"yahoo": 51481.51, "cnbc": 51481.51, "investing_com": 51481.51, "match": true},
+    "fifty_two_week_high": {"yahoo": 54744.33, "cnbc": 54744.33, "match": true},
+    "fifty_two_week_low": {"yahoo": 45057.28, "cnbc": 45057.28, "match": true},
+    "last_price": {
+      "yahoo_1939_44Z": 51361.17,
+      "cnbc_1941_41Z_local_1541_41_EDT": 51358.67,
+      "abs_diff": 2.50,
+      "match": "within tick/latency tolerance (different snapshot instants ~2 min apart)"
+    },
+    "cumulative_volume": {
+      "yahoo_1939Z": 256517137,
+      "cnbc_1941Z": 258026708,
+      "note": "Monotonically increasing intraday cumulative volume; CNBC snapshot is later, so a higher value is expected."
+    }
+  }
+}
