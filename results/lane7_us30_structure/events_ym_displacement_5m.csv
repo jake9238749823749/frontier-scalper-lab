@@ -1,0 +1,5 @@
+kind,tf,bar,time,source,from_bar,to_bar,bars,open,close,net_pts,atr_ref,atr_mult,efficiency
+displacement_down,5m,18,11:00,YM_5m_rth.json,11:00,11:20,5,51615.0,51485.0,-130.0,62.43,2.08,1.0
+displacement_up,5m,46,13:20,YM_5m_rth.json,13:20,13:40,5,51506.0,51576.0,70.0,29.14,2.4,1.0
+displacement_up,5m,53,13:55,YM_5m_rth.json,13:55,14:00,2,51536.0,51618.0,82.0,30.14,2.72,1.0
+displacement_up,5m,58,14:20,YM_5m_rth.json,14:20,14:40,5,51611.0,51688.0,77.0,37.43,2.06,0.73

@@ -1,0 +1,10 @@
+kind,tf,bar,time,source,gap_low,gap_high,size_pts,displacement_bar,pct_filled,status
+FVG_bearish,5m,19,11:05,YM_5m_rth.json,51584.0,51610.0,26.0,11:00,100.0,FILLED
+FVG_bearish,5m,22,11:20,YM_5m_rth.json,51512.0,51518.0,6.0,11:15,100.0,FILLED
+FVG_bullish,5m,25,11:35,YM_5m_rth.json,51510.0,51551.0,41.0,11:30,100.0,FILLED
+FVG_bearish,5m,29,11:55,YM_5m_rth.json,51505.0,51533.0,28.0,11:50,100.0,FILLED
+FVG_bullish,5m,48,13:30,YM_5m_rth.json,51522.0,51529.0,7.0,13:25,0.0,UNFILLED
+FVG_bearish,5m,53,13:55,YM_5m_rth.json,51550.0,51556.0,6.0,13:50,100.0,FILLED
+FVG_bullish,5m,55,14:05,YM_5m_rth.json,51550.0,51558.0,8.0,14:00,25.0,PARTIAL
+FVG_bullish,5m,62,14:40,YM_5m_rth.json,51645.0,51669.0,24.0,14:35,37.5,PARTIAL
+FVG_bullish,5m,67,15:05,YM_5m_rth.json,51687.0,51694.0,7.0,15:00,100.0,FILLED

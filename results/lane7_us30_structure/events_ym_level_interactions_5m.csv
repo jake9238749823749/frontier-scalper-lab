@@ -1,0 +1,8 @@
+kind,tf,bar,time,source,level,level_price,origin,from,to,bars,max_penetration_pts,episode_extreme,bars_closed_beyond,reaction_next_6b_pts
+BREAK_then_RECLAIM_low,5m,12,10:30,YM_5m_rth.json,ON low  (Globex 18:00-09:30),51644.0,YM 5m Tue 01:35,10:30,14:35,50,185.0,51459.0,45,261.0
+SWEEP_high,5m,2,09:40,YM_5m_rth.json,Prev close - upside test,51837.0,YM meta chartPreviousClose,09:40,09:40,1,11.0,51848.0,0,172.0
+BREAK_HOLD_low,5m,0,09:30,YM_5m_rth.json,Prev close - downside acceptance,51837.0,YM meta chartPreviousClose,09:30,15:50,77,378.0,51459.0,77,
+SWEEP_low,5m,22,11:20,YM_5m_rth.json,09-24 low (ET calendar day),51479.0,YM_1d_1mo.json bar 17,11:20,11:25,2,15.0,51464.0,0,136.0
+SWEEP_low,5m,30,12:00,YM_5m_rth.json,09-24 low (ET calendar day),51479.0,YM_1d_1mo.json bar 17,12:00,12:05,2,20.0,51459.0,0,78.0
+FAILED_BREAK_low,5m,0,09:30,YM_5m_rth.json,09-28 low (ET calendar day),51744.0,YM_1d_1mo.json bar 19,09:30,09:35,2,64.0,51680.0,1,168.0
+BREAK_HOLD_low,5m,3,09:45,YM_5m_rth.json,09-28 low (ET calendar day),51744.0,YM_1d_1mo.json bar 19,09:45,15:50,74,285.0,51459.0,73,

@@ -1,0 +1,21 @@
+kind,tf,bar,time,source,level,level_price,origin,from,to,bars,max_penetration_pts,episode_extreme,bars_closed_beyond,reaction_next_6b_pts
+FAILED_BREAK_high,1m,11,09:41,^DJI 1m (DJI_1m_s1..s7),"PDC  (prior day close, 09-28)",51481.51,DJI_1d_1mo.json bar 19,09:41,09:43,3,23.68,51505.19,2,118.75
+FAILED_BREAK_low,1m,3,09:33,^DJI 1m (DJI_1m_s1..s7),"PDL  (prior day low, 09-28)",51409.65,DJI_1d_1mo.json bar 19,09:33,09:35,3,56.02,51353.63,2,141.65
+FAILED_BREAK_low,1m,7,09:37,^DJI 1m (DJI_1m_s1..s7),"PDL  (prior day low, 09-28)",51409.65,DJI_1d_1mo.json bar 19,09:37,09:39,3,17.88,51391.77,1,113.42
+BREAK_HOLD_low,1m,15,09:45,^DJI 1m (DJI_1m_s1..s7),"PDL  (prior day low, 09-28)",51409.65,DJI_1d_1mo.json bar 19,09:45,15:59,375,280.47,51129.18,369,
+FAILED_BREAK_low,1m,2,09:32,^DJI 1m (DJI_1m_s1..s7),RTH open (today),51416.96,DJI 1m 09:30 open,09:32,09:35,4,63.33,51353.63,3,141.65
+FAILED_BREAK_low,1m,7,09:37,^DJI 1m (DJI_1m_s1..s7),RTH open (today),51416.96,DJI 1m 09:30 open,09:37,09:39,3,25.19,51391.77,1,113.42
+BREAK_HOLD_low,1m,15,09:45,^DJI 1m (DJI_1m_s1..s7),RTH open (today),51416.96,DJI 1m 09:30 open,09:45,15:59,375,287.78,51129.18,372,
+FAILED_BREAK_low,1m,62,10:32,^DJI 1m (DJI_1m_s1..s7),IB low  (09:30-10:30),51325.58,DJI 1m 09:30-10:29,10:32,10:34,3,26.6,51298.98,2,55.64
+BREAK_then_RECLAIM_low,1m,67,10:37,^DJI 1m (DJI_1m_s1..s7),IB low  (09:30-10:30),51325.58,DJI 1m 09:30-10:29,10:37,14:38,242,196.4,51129.18,240,251.2
+SWEEP_low,1m,320,14:50,^DJI 1m (DJI_1m_s1..s7),IB low  (09:30-10:30),51325.58,DJI 1m 09:30-10:29,14:50,14:50,1,0.94,51324.64,0,14.96
+SWEEP_low,1m,322,14:52,^DJI 1m (DJI_1m_s1..s7),IB low  (09:30-10:30),51325.58,DJI 1m 09:30-10:29,14:52,14:52,1,1.19,51324.39,0,12.9
+SWEEP_low,1m,327,14:57,^DJI 1m (DJI_1m_s1..s7),IB low  (09:30-10:30),51325.58,DJI 1m 09:30-10:29,14:57,14:58,2,2.43,51323.15,0,40.26
+SWEEP_low,1m,102,11:12,^DJI 1m (DJI_1m_s1..s7),09-16 swing low (daily),51186.67,DJI_1d_1mo.json bar 11,11:12,11:12,1,0.26,51186.41,0,18.13
+BREAK_then_RECLAIM_low,1m,108,11:18,^DJI 1m (DJI_1m_s1..s7),09-16 swing low (daily),51186.67,DJI_1d_1mo.json bar 11,11:18,11:33,16,53.91,51132.76,15,105.97
+BREAK_then_RECLAIM_low,1m,141,11:51,^DJI 1m (DJI_1m_s1..s7),09-16 swing low (daily),51186.67,DJI_1d_1mo.json bar 11,11:51,12:33,43,57.49,51129.18,40,74.48
+SWEEP_low,1m,192,12:42,^DJI 1m (DJI_1m_s1..s7),09-16 swing low (daily),51186.67,DJI_1d_1mo.json bar 11,12:42,12:42,1,1.8,51184.87,0,18.08
+FAILED_BREAK_low,1m,194,12:44,^DJI 1m (DJI_1m_s1..s7),09-16 swing low (daily),51186.67,DJI_1d_1mo.json bar 11,12:44,12:47,4,19.22,51167.45,3,38.65
+FAILED_BREAK_low,1m,199,12:49,^DJI 1m (DJI_1m_s1..s7),09-16 swing low (daily),51186.67,DJI_1d_1mo.json bar 11,12:49,12:50,2,7.07,51179.6,1,26.5
+BREAK_then_RECLAIM_low,1m,206,12:56,^DJI 1m (DJI_1m_s1..s7),09-16 swing low (daily),51186.67,DJI_1d_1mo.json bar 11,12:56,13:24,29,36.27,51150.4,27,54.48
+FAILED_BREAK_low,1m,236,13:26,^DJI 1m (DJI_1m_s1..s7),09-16 swing low (daily),51186.67,DJI_1d_1mo.json bar 11,13:26,13:28,3,9.08,51177.59,2,39.39

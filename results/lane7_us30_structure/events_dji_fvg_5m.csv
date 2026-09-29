@@ -1,0 +1,13 @@
+kind,tf,bar,time,source,gap_low,gap_high,size_pts,displacement_bar,pct_filled,status
+FVG_bearish,5m,19,11:05,^DJI 5m (resampled from verified 1m),51247.28,51273.05,25.77,11:00,100.0,FILLED
+FVG_bearish,5m,20,11:10,^DJI 5m (resampled from verified 1m),51232.24,51239.59,7.35,11:05,100.0,FILLED
+FVG_bearish,5m,21,11:15,^DJI 5m (resampled from verified 1m),51204.54,51210.4,5.86,11:10,100.0,FILLED
+FVG_bearish,5m,22,11:20,^DJI 5m (resampled from verified 1m),51180.44,51186.41,5.97,11:15,100.0,FILLED
+FVG_bullish,5m,25,11:35,^DJI 5m (resampled from verified 1m),51168.83,51215.26,46.43,11:30,100.0,FILLED
+FVG_bearish,5m,29,11:55,^DJI 5m (resampled from verified 1m),51170.83,51195.9,25.07,11:50,100.0,FILLED
+FVG_bullish,5m,48,13:30,^DJI 5m (resampled from verified 1m),51191.18,51198.18,7.0,13:25,0.0,UNFILLED
+FVG_bullish,5m,49,13:35,^DJI 5m (resampled from verified 1m),51199.55,51212.04,12.49,13:30,95.5,PARTIAL
+FVG_bearish,5m,53,13:55,^DJI 5m (resampled from verified 1m),51219.08,51225.34,6.26,13:50,100.0,FILLED
+FVG_bullish,5m,58,14:20,^DJI 5m (resampled from verified 1m),51266.91,51274.55,7.64,14:15,100.0,FILLED
+FVG_bullish,5m,62,14:40,^DJI 5m (resampled from verified 1m),51303.8,51333.28,29.48,14:35,34.4,PARTIAL
+FVG_bullish,5m,67,15:05,^DJI 5m (resampled from verified 1m),51348.01,51357.34,9.33,15:00,100.0,FILLED

@@ -1,0 +1,3 @@
+kind,tf,bar,time,source,broken_swing,swing_price,close,swing_confirmed_at
+BOS_up,5m,48,13:30,^DJI 5m (resampled from verified 1m),SH@12:50=51206.10,51206.1,51216.98,13:05
+BOS_up,5m,54,14:00,^DJI 5m (resampled from verified 1m),SH@11:45=51255.33,51255.33,51279.61,12:00

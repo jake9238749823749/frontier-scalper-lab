@@ -1,0 +1,6 @@
+kind,tf,bar,time,source,from_bar,to_bar,bars,open,close,net_pts,atr_ref,atr_mult,efficiency
+displacement_down,5m,18,11:00,^DJI 5m (resampled from verified 1m),11:00,11:20,5,51274.4,51149.32,-125.08,56.05,2.23,1.0
+displacement_up,5m,46,13:20,^DJI 5m (resampled from verified 1m),13:20,13:40,5,51177.18,51243.42,66.24,25.2,2.63,1.0
+displacement_up,5m,53,13:55,^DJI 5m (resampled from verified 1m),13:55,14:00,2,51209.28,51279.61,70.33,26.15,2.69,1.0
+displacement_up,5m,56,14:10,^DJI 5m (resampled from verified 1m),14:10,14:20,3,51223.12,51288.9,65.78,32.33,2.03,1.0
+displacement_up,5m,60,14:30,^DJI 5m (resampled from verified 1m),14:30,14:40,3,51273.58,51347.82,74.24,32.84,2.26,0.95

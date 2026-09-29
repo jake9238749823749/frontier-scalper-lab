@@ -1,0 +1,2 @@
+kind,tf,bar,time,source,level,level_price,origin,bars_below_before,reclaim_close,closes_held_above,hold_required,note
+RECLAIM_confirmed,5m,61,14:35,YM_5m_rth.json,ON low  (Globex 18:00-09:30),51644.0,YM 5m Tue 01:35,44,51681.0,5,5,
