@@ -222,7 +222,7 @@ and if none qualifies the tool refuses to rank at all.
 Full console output: [`artifacts/verification_runs.txt`](artifacts/verification_runs.txt),
 [`artifacts/test_run.txt`](artifacts/test_run.txt).
 
-### 6.1 Mechanics suite — 34/34 passing
+### 6.1 Mechanics suite — 37/37 passing
 
 `python3 tests/test_us30_sweep_reclaim.py`. Backtrader is stubbed, so **the
 exact file you paste into Studio is the file under test**. Coverage:
@@ -250,6 +250,9 @@ exact file you paste into Studio is the file under test**. Coverage:
 - **Data hygiene** — out-of-order bars raise; identical duplicates, conflicting
   duplicates and `high < low` rows are classified separately; epoch-ms and ISO
   timestamps parse identically.
+- **Paste integrity** — the Studio file parses under `ast.parse` (the exact
+  check Studio runs), is pure ASCII, imports nothing but `backtrader`, and its
+  end-of-file sentinel advertises the true line count.
 - **Reconciliation** — one trade's entry, exit, lots, P/L and R are recomputed
   by hand from the underlying bars and matched.
 
@@ -315,6 +318,13 @@ so none is given.
    log into a live or demo broker account. Studio exists only there.
 2. Open Studio → create a new bot → paste the **entire** contents of
    [`tradelocker_studio_us30.py`](tradelocker_studio_us30.py).
+
+   **Verify the paste landed whole.** The file is 638 lines / ~27 KB and ends
+   with an `# END OF FILE - paste integrity check` banner. If that banner is
+   not the last thing in the Studio editor, the copy was truncated and Studio
+   will report a syntax error like `'(' was never closed` pointing at whatever
+   line the paste stopped on. That message means *the file is incomplete*, not
+   that the logic is wrong. Re-copy and paste again.
 3. Backtest settings in the UI: instrument **US30** (your broker's symbol),
    resolution **1 minute** — this is required, the 15m logic is built from it —
    your date range, and your margin.
@@ -405,6 +415,6 @@ Not answerable from outside the desktop app:
 |---|---|
 | `tradelocker_studio_us30.py` | The deliverable. Paste this into Studio. Contains the time layer, the rule engine, and the `bt.Strategy` wrapper. |
 | `research_backtest.py` | Offline harness. Imports the engine from the file above — never reimplements it. Data loading, integrity, execution model, metrics, splits, grid, negative control. |
-| `../../tests/test_us30_sweep_reclaim.py` | 34 mechanics tests against the paste-ready file. |
+| `../../tests/test_us30_sweep_reclaim.py` | 37 mechanics tests against the paste-ready file. |
 | `ASSUMPTIONS.md` | Every modelling decision made where the brief was underspecified. |
 | `artifacts/` | Console output and CSV logs of the runs reported in §6. |

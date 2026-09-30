@@ -625,3 +625,14 @@ class US30SweepReclaimStrategy(bt.Strategy):
                  "conflict_blocked=%d stop_bounds_rejected=%d"
                  % (s["sessions"], s["rth_bars"], s["gaps"], s["ambiguous_bars"],
                     s["blocked_conflict"], s["rejected_stop_bounds"]))
+
+
+# =============================================================================
+# END OF FILE - paste integrity check
+# -----------------------------------------------------------------------------
+# If the LAST line visible in the Studio editor is not the "# END OF FILE"
+# banner above, your paste was TRUNCATED and Studio will report a syntax error
+# such as "'(' was never closed". Re-copy the whole file and paste again.
+#   expected total lines : 638
+#   expected imports     : backtrader only
+# =============================================================================

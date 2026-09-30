@@ -548,6 +548,47 @@ def test_research_harness_and_studio_share_one_engine():
 
 
 # ---------------------------------------------------------------------------
+# 7b. PASTE INTEGRITY  -  the failure mode that actually bites in Studio
+# ---------------------------------------------------------------------------
+
+STUDIO_FILE = os.path.join(PKG, "tradelocker_studio_us30.py")
+
+
+def test_studio_file_parses_exactly_as_studio_checks_it():
+    """Studio's bot check parses the source. A truncated paste fails there."""
+    import ast
+    src = open(STUDIO_FILE, encoding="utf-8").read()
+    ast.parse(src)                      # raises SyntaxError if truncated
+
+
+def test_studio_file_is_pure_ascii_and_ends_with_the_sentinel():
+    src = open(STUDIO_FILE, encoding="utf-8").read()
+    bad = sorted({c for c in src if ord(c) > 127})
+    assert not bad, "non-ASCII characters survive paste badly: %s" % bad
+    lines = src.splitlines()
+    assert "END OF FILE" in src, "the paste-integrity sentinel is missing"
+    advertised = None
+    for line in lines:
+        if "expected total lines" in line:
+            advertised = int(line.split(":")[1].strip())
+    assert advertised == len(lines), \
+        "sentinel advertises %s lines but the file has %s" % (advertised, len(lines))
+
+
+def test_studio_file_imports_only_backtrader():
+    """Anything else invites a code-checker rejection and a runtime surprise."""
+    import ast
+    tree = ast.parse(open(STUDIO_FILE, encoding="utf-8").read())
+    mods = set()
+    for n in ast.walk(tree):
+        if isinstance(n, ast.Import):
+            mods.update(a.name.split(".")[0] for a in n.names)
+        elif isinstance(n, ast.ImportFrom) and n.module:
+            mods.add(n.module.split(".")[0])
+    assert mods == {"backtrader"}, "unexpected imports: %s" % sorted(mods)
+
+
+# ---------------------------------------------------------------------------
 # 8. RECONCILIATION: a trade recomputed by hand from the bars
 # ---------------------------------------------------------------------------
 
