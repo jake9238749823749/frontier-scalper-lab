@@ -29,6 +29,7 @@ Established from official sources before a line of strategy code was written.
 | Backtest configuration — **instrument, resolution, time period, margin** — is set in the **Studio UI**, not in code | [tradelocker.com/studio](https://tradelocker.com/studio/) |
 | Studio is **desktop-app only** and needs a linked live or demo broker account | [MACDominator "How to get"](https://tradelocker.com/hub/bots/macdominator-13); [support article 13704288](https://support.tradelocker.com/en/articles/13704288-studio) |
 | Bots run **on your local machine**; the app must stay open and logged in | MACDominator FAQ |
+| Studio additionally enforces a **security policy** that rejects certain builtins. Observed verbatim: `Security policy violated in strategy \| Use of functions is not allowed: ['getattr']`. No denylist is published; the message names every offender it finds, and `dict`/`tuple`/`sorted`/`print`/`min`/`max`/`divmod`/`float`/`int` were present in the same file and went unreported, so those are permitted. | desktop app, observed directly |
 | Code validation checks Python syntax and resolves referenced indicators; it does **not** execute the bot | [disable bot code checks](https://tradelocker.com/how-to/disable-bot-code-checks/); corroborated by third-party [tradescriptai](https://tradescriptai.com/tradelocker-bot-builder) |
 
 **Explicitly out of scope:** the `tradelocker-python` REST package (`TLAPI`,
@@ -51,6 +52,14 @@ to **not depend on them**:
 - **C-3 Native protective orders.** No source documents stop-loss/take-profit
   arguments on Studio's `self.buy()`/`self.sell()`. Exits are issued as market
   closes via `self.close()`, using only the minimal documented surface.
+- **C-5 Security policy.** Studio rejects reflection builtins — `getattr` is
+  confirmed blocked by direct observation. Because no denylist is published,
+  the strategy avoids a conservative superset (`getattr`, `setattr`,
+  `delattr`, `hasattr`, `eval`, `exec`, `compile`, `__import__`, `globals`,
+  `locals`, `vars`, `dir`, `open`, `input`, ...) and a test enforces this. The
+  practical cost is that the 19 engine parameters must be named explicitly in
+  `__init__` rather than looped over; a second test parses that call and fails
+  if it drifts from the engine's parameter list.
 - **C-4 Order lifecycle.** `notify_order` is standard Backtrader, but Studio's
   broker simulation details (fill price convention, partial fills, rejection
   reasons) are not published. The strategy never stacks a second order while
@@ -222,7 +231,7 @@ and if none qualifies the tool refuses to rank at all.
 Full console output: [`artifacts/verification_runs.txt`](artifacts/verification_runs.txt),
 [`artifacts/test_run.txt`](artifacts/test_run.txt).
 
-### 6.1 Mechanics suite — 37/37 passing
+### 6.1 Mechanics suite — 39/39 passing
 
 `python3 tests/test_us30_sweep_reclaim.py`. Backtrader is stubbed, so **the
 exact file you paste into Studio is the file under test**. Coverage:
@@ -253,6 +262,10 @@ exact file you paste into Studio is the file under test**. Coverage:
 - **Paste integrity** — the Studio file parses under `ast.parse` (the exact
   check Studio runs), is pure ASCII, imports nothing but `backtrader`, and its
   end-of-file sentinel advertises the true line count.
+- **Studio security policy** — the file uses none of the blocked reflection /
+  dynamic-execution builtins, and the explicit 19-parameter engine
+  construction is parsed and matched against the engine's parameter list so it
+  cannot silently drift.
 - **Reconciliation** — one trade's entry, exit, lots, P/L and R are recomputed
   by hand from the underlying bars and matched.
 
@@ -319,7 +332,7 @@ so none is given.
 2. Open Studio → create a new bot → paste the **entire** contents of
    [`tradelocker_studio_us30.py`](tradelocker_studio_us30.py).
 
-   **Verify the paste landed whole.** The file is 638 lines / ~27 KB and ends
+   **Verify the paste landed whole.** The file is 662 lines / ~28 KB and ends
    with an `# END OF FILE - paste integrity check` banner. If that banner is
    not the last thing in the Studio editor, the copy was truncated and Studio
    will report a syntax error like `'(' was never closed` pointing at whatever
@@ -415,6 +428,6 @@ Not answerable from outside the desktop app:
 |---|---|
 | `tradelocker_studio_us30.py` | The deliverable. Paste this into Studio. Contains the time layer, the rule engine, and the `bt.Strategy` wrapper. |
 | `research_backtest.py` | Offline harness. Imports the engine from the file above — never reimplements it. Data loading, integrity, execution model, metrics, splits, grid, negative control. |
-| `../../tests/test_us30_sweep_reclaim.py` | 37 mechanics tests against the paste-ready file. |
+| `../../tests/test_us30_sweep_reclaim.py` | 39 mechanics tests against the paste-ready file. |
 | `ASSUMPTIONS.md` | Every modelling decision made where the brief was underspecified. |
 | `artifacts/` | Console output and CSV logs of the runs reported in §6. |

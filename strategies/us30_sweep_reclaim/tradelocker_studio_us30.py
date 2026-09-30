@@ -548,8 +548,32 @@ class US30SweepReclaimStrategy(bt.Strategy):
                    "max_trades_per_session", "max_gap_minutes")
 
     def __init__(self):
-        self.engine = US30RuleEngine(**dict((k, getattr(self.p, k))
-                                            for k in self.ENGINE_KEYS))
+        # Parameters are passed one by one on purpose. Studio's security check
+        # rejects getattr(), so no reflection over ENGINE_KEYS is possible
+        # here. tests/test_us30_sweep_reclaim.py parses this call and fails if
+        # it ever drifts out of sync with the engine's parameter list.
+        p = self.p
+        self.engine = US30RuleEngine(
+            rth_start=p.rth_start,
+            rth_end=p.rth_end,
+            entry_cutoff=p.entry_cutoff,
+            flat_by=p.flat_by,
+            min_prior_session_bars=p.min_prior_session_bars,
+            incomplete_prior_policy=p.incomplete_prior_policy,
+            sweep_min_pts=p.sweep_min_pts,
+            reclaim_buffer_pts=p.reclaim_buffer_pts,
+            allow_same_bar_reclaim=p.allow_same_bar_reclaim,
+            rejection_zone_pts=p.rejection_zone_pts,
+            rejection_close_buffer_pts=p.rejection_close_buffer_pts,
+            confirm_buffer_pts=p.confirm_buffer_pts,
+            setup_expiry_bars=p.setup_expiry_bars,
+            stop_buffer_pts=p.stop_buffer_pts,
+            target_r=p.target_r,
+            min_stop_pts=p.min_stop_pts,
+            max_stop_pts=p.max_stop_pts,
+            max_trades_per_session=p.max_trades_per_session,
+            max_gap_minutes=p.max_gap_minutes,
+        )
         self.order = None
         self._logged_first_bar = False
 
@@ -633,6 +657,6 @@ class US30SweepReclaimStrategy(bt.Strategy):
 # If the LAST line visible in the Studio editor is not the "# END OF FILE"
 # banner above, your paste was TRUNCATED and Studio will report a syntax error
 # such as "'(' was never closed". Re-copy the whole file and paste again.
-#   expected total lines : 638
+#   expected total lines : 662
 #   expected imports     : backtrader only
 # =============================================================================

@@ -588,6 +588,69 @@ def test_studio_file_imports_only_backtrader():
     assert mods == {"backtrader"}, "unexpected imports: %s" % sorted(mods)
 
 
+def test_studio_file_uses_no_function_blocked_by_studios_security_policy():
+    """Studio rejects reflection/eval builtins outright.
+
+    Observed verbatim from the desktop app:
+        Security policy violated in strategy |
+        Use of functions is not allowed: ['getattr']
+
+    TradeLocker publishes no denylist, so this is the conservative superset of
+    reflection, dynamic-execution and I/O builtins. The same message confirmed
+    that dict/tuple/sorted/print/min/max/divmod/float/int ARE permitted --
+    they were present in the same file and went unreported.
+    """
+    import ast
+    blocked = {
+        "getattr", "setattr", "delattr", "hasattr",
+        "eval", "exec", "compile", "__import__", "importlib",
+        "globals", "locals", "vars", "dir", "open", "input",
+        "breakpoint", "exit", "quit", "help", "memoryview",
+    }
+    tree = ast.parse(open(STUDIO_FILE, encoding="utf-8").read())
+    used = set()
+    for n in ast.walk(tree):
+        if isinstance(n, ast.Call) and isinstance(n.func, ast.Name):
+            used.add(n.func.id)
+        elif isinstance(n, ast.Name):
+            used.add(n.id)
+    offending = sorted(used & blocked)
+    assert not offending, \
+        "Studio's security check will reject these: %s" % offending
+
+
+def test_engine_construction_in_studio_file_matches_the_engine_parameters():
+    """The explicit constructor call cannot silently drift.
+
+    Because getattr() is banned, the strategy must name all 19 parameters by
+    hand. This parses that call and compares it against DEFAULTS, so adding an
+    engine parameter without wiring it through fails here instead of silently
+    running on a default in Studio.
+    """
+    import ast
+    tree = ast.parse(open(STUDIO_FILE, encoding="utf-8").read())
+    call = None
+    for n in ast.walk(tree):
+        if (isinstance(n, ast.Call) and isinstance(n.func, ast.Name)
+                and n.func.id == "US30RuleEngine"):
+            call = n
+    assert call is not None, "no US30RuleEngine(...) construction found"
+    assert not call.args, "pass engine parameters by keyword, not positionally"
+    passed = sorted(kw.arg for kw in call.keywords if kw.arg)
+    assert None not in [kw.arg for kw in call.keywords], \
+        "**kwargs unpacking defeats the drift check"
+    assert passed == sorted(STUDIO.DEFAULTS), (
+        "constructor call and engine DEFAULTS disagree; missing=%s extra=%s"
+        % (sorted(set(STUDIO.DEFAULTS) - set(passed)),
+           sorted(set(passed) - set(STUDIO.DEFAULTS))))
+    # every value must come straight off self.p, not be hard-coded
+    for kw in call.keywords:
+        assert isinstance(kw.value, ast.Attribute), \
+            "%s is not read from the params dict" % kw.arg
+        assert kw.value.attr == kw.arg, \
+            "%s is wired to self.p.%s" % (kw.arg, kw.value.attr)
+
+
 # ---------------------------------------------------------------------------
 # 8. RECONCILIATION: a trade recomputed by hand from the bars
 # ---------------------------------------------------------------------------
